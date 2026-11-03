@@ -6,7 +6,6 @@ import { OffscreenPause } from "@/components/offscreen-pause";
 import { PointerSpotlight } from "@/components/pointer-spotlight";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ScrollProgress } from "@/components/scroll-progress";
-import { SmoothScroll } from "@/components/smooth-scroll";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { WhatsAppButton } from "@/components/whatsapp-button";
@@ -32,7 +31,6 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <BackToTop />
       <LeadPopup />
       <MotionFx />
-      <SmoothScroll />
       <OffscreenPause />
       <ScrollReveal />
     </>
