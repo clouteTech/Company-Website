@@ -23,7 +23,8 @@ const nextConfig: NextConfig = {
   // Let phones on the local network load dev scripts (otherwise the page renders but nothing is interactive).
   // Dev-only; update these if the machine's LAN address changes.
   // Any address on the local network, so other devices keep working when the LAN IP changes.
-  allowedDevOrigins: ["192.168.*.*", "172.23.0.1"],
+  // The GoDaddy preview host is allowed too, otherwise its dev resources (HMR, error overlay) are blocked.
+  allowedDevOrigins: ["192.168.*.*", "172.23.0.1", "*.airoapp.ai"],
   experimental: {
     agentFeedback: true,
   },
