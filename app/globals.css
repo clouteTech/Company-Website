@@ -677,8 +677,15 @@
   transition: filter 500ms var(--ease-premium);
 }
 
+/* On load the cloud pops in with a small overshoot, then floats; the lettering wipes in from the left. */
 .logo-mark {
-  animation: logo-float 5s var(--ease-smooth) infinite;
+  animation:
+    logo-pop 800ms var(--ease-premium) backwards,
+    logo-float 5s var(--ease-smooth) 800ms infinite;
+}
+
+.logo-word {
+  animation: logo-reveal 900ms var(--ease-premium) 250ms backwards;
 }
 
 /* Hovering the logo lifts and tilts the cloud, with a soft glow round the whole mark. */
@@ -693,7 +700,11 @@ a:hover > .logo .logo-mark {
 
 @media (prefers-reduced-motion: reduce) {
   .logo-mark {
-    animation-duration: 9s;
+    animation: logo-float 9s var(--ease-smooth) infinite;
+  }
+
+  .logo-word {
+    animation: none;
   }
 }
 
@@ -1534,7 +1545,33 @@ a:hover > .logo .logo-mark {
     translate: 0 0;
   }
   50% {
-    translate: 0 -2px;
+    translate: 0 -3px;
+  }
+}
+
+@keyframes logo-pop {
+  from {
+    opacity: 0;
+    scale: 0.4;
+    rotate: -18deg;
+  }
+  60% {
+    opacity: 1;
+    scale: 1.12;
+    rotate: 4deg;
+  }
+}
+
+@keyframes logo-reveal {
+  from {
+    opacity: 0;
+    translate: -10px 0;
+    clip-path: inset(-20% 100% -20% 0);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    clip-path: inset(-20% -5% -20% 0);
   }
 }
 

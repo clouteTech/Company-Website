@@ -30,7 +30,7 @@ export function Logo({ tone = "color", className = "", preload = false }: LogoPr
       <svg
         viewBox="3 -76 413 116"
         aria-hidden="true"
-        className={`block h-auto w-[7.625rem] shrink-0 overflow-visible max-[359px]:w-[6.5rem] font-display transition-colors duration-300 ease-(--ease-premium) sm:w-[8.5rem] xl:w-[9rem] ${
+        className={`logo-word block h-auto w-[7.625rem] shrink-0 overflow-visible max-[359px]:w-[6.5rem] font-display transition-colors duration-300 ease-(--ease-premium) sm:w-[8.5rem] xl:w-[9rem] ${
           tone === "white" ? "text-white" : "text-black"
         }`}
         fill="currentColor"
