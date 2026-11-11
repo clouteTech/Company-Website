@@ -17,6 +17,8 @@ import {
   Target,
   Waypoints,
 } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Image from "next/image";
@@ -229,6 +231,8 @@ export default function AboutPage() {
 
   return (
     <div className="abt" style={palette}>
+      <JsonLd graph={breadcrumbJsonLd([{ name: "About Us", path: "/about-us" }])} />
+
       <LightHero
         layout="stacked"
         title={cms.aboutUs.AboutPage.title01_about_us}

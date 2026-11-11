@@ -1,4 +1,6 @@
 import { Flame } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 
 import { BlogExplorer } from "@/components/blog-explorer";
@@ -15,6 +17,7 @@ export default function BlogsPage() {
 
   return (
     <>
+      <JsonLd graph={breadcrumbJsonLd([{ name: "Blogs", path: "/blogs" }])} />
       <PageHero
         title={copy.page.title}
         tagline={copy.page.tagline}

@@ -1,4 +1,6 @@
 import { ArrowDown, ArrowRight, Phone } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -88,6 +90,7 @@ function StageShell({ id, className, children }: { id: string; className: string
 export default function TechnologyPage() {
   return (
     <>
+      <JsonLd graph={breadcrumbJsonLd([{ name: "Technology", path: "/technology" }])} />
       {/* Opening: the stage, the presenter and the agenda. */}
       <section className="on-dark relative isolate flex min-h-svh items-center overflow-clip bg-abyss text-white">
         {/* "Dynamic futuristic network connections animation" from Pexels (pexels.com/video/33248294), Pexels License. */}

@@ -9,6 +9,8 @@ import {
   Timer,
   Users,
 } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
@@ -97,6 +99,8 @@ const initials = ["AK", "RS", "PM", "NV", "SJ", "DK", "LT", "MR", "VP", "KS"];
 export default function RecruitmentPage() {
   return (
     <div className="rec" style={palette}>
+      <JsonLd graph={breadcrumbJsonLd([{ name: "Recruitment", path: "/recruitment" }])} />
+
       <LightHero
         title={cms.recruitment.RecruitmentPage.title01_recruitment_company_in_bangalore}
         eyebrow={cms.recruitment.RecruitmentPage.eyebrow02_recruitment}

@@ -85,7 +85,13 @@ import teamWorkshop from "@/public/images/team-workshop.jpg";
 import workstation from "@/public/images/workstation.jpg";
 import cms from "@/content/homepage.json";
 
-export const metadata: Metadata = cms.site.metadata;
+export const metadata: Metadata = {
+  ...cms.site.metadata,
+  openGraph: { ...cms.site.metadata.openGraph, type: "website", siteName: "Cloute Technologies",
+    locale: "en_IN",
+    images: [{ url: "/opengraph-image.jpg", width: 1280, height: 719, alt: "Cloute Technologies – IT solutions company in Bengaluru, India" }],
+  },
+};
 
 const servicePage = (href: string) => {
   const link = serviceLinks.find((service) => service.href === href);

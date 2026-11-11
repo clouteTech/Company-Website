@@ -5,9 +5,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense, type CSSProperties, type ReactNode } from "react";
 
+import { JsonLd } from "@/components/json-ld";
 import { BlogShare } from "@/components/blog-share";
 import { CtaBand, PageHero, stagger } from "@/components/sections";
 import { SocialIcon } from "@/components/social-icon";
+import { breadcrumbJsonLd, ORG_ID, SITE_URL } from "@/lib/seo";
 import { company, serviceLinks, socials } from "@/lib/site";
 import { whatsappUrl } from "@/lib/whatsapp";
 import copy from "@/content/blogs.json";
@@ -27,6 +29,18 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     title: `${post.title} | Cloute Technologies`,
     description: post.excerpt,
     alternates: { canonical: `/blogs/${post.slug}` },
+    openGraph: {
+      type: "article",
+      siteName: "Cloute Technologies",
+      locale: "en_IN",
+      url: `/blogs/${post.slug}`,
+      title: post.title,
+      description: post.excerpt,
+      publishedTime: post.isoDate,
+      section: post.category,
+      images: [{ url: post.image, alt: post.imageAlt }],
+    },
+    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: [post.image] },
   };
 }
 
@@ -99,8 +113,31 @@ async function BlogPost({ params }: { params: Promise<Params> }) {
     { icon: Clock, label: copy.page.readTimeLabel, value: `${minutes} ${copy.page.minRead}` },
   ];
 
+  const articleUrl = `${SITE_URL}/blogs/${post.slug}`;
+
   return (
     <>
+      <JsonLd
+        graph={[
+          {
+            "@type": "BlogPosting",
+            "@id": `${articleUrl}#article`,
+            mainEntityOfPage: articleUrl,
+            headline: post.title,
+            description: post.excerpt,
+            image: `${SITE_URL}${post.image}`,
+            datePublished: post.isoDate,
+            articleSection: post.category,
+            inLanguage: "en-IN",
+            author: { "@id": ORG_ID },
+            publisher: { "@id": ORG_ID },
+          },
+          breadcrumbJsonLd([
+            { name: copy.page.crumb, path: "/blogs" },
+            { name: post.title, path: `/blogs/${post.slug}` },
+          ]),
+        ]}
+      />
       <PageHero
         title={post.title}
         tagline={post.category}

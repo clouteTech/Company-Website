@@ -26,6 +26,9 @@ export function serviceMetadata(slug: ServiceSlug): Metadata {
     alternates: { canonical: `/${slug}` },
     openGraph: {
       type: "website",
+      siteName: "Cloute Technologies",
+      locale: "en_IN",
+      images: [{ url: "/opengraph-image.jpg", width: 1280, height: 719, alt: "Cloute Technologies – IT solutions company in Bengaluru, India" }],
       url: `/${slug}`,
       title: service.seo?.ogTitle ?? service.metaTitle,
       description: service.seo?.ogDescription ?? service.metaDescription,

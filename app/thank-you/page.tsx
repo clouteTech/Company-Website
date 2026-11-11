@@ -5,7 +5,7 @@ import Link from "next/link";
 import { SplitText, stagger } from "@/components/sections";
 import copy from "@/content/contact.json";
 
-export const metadata: Metadata = copy.thankYou.metadata;
+export const metadata: Metadata = { ...copy.thankYou.metadata, robots: { index: false, follow: false } };
 
 export default function ThankYouPage() {
   return (

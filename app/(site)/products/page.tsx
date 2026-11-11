@@ -12,6 +12,8 @@ import {
   Waypoints,
   Wrench,
 } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import { RotatingImage } from "@/components/rotating-image";
 import { withVariants } from "@/lib/image-variants";
@@ -127,6 +129,7 @@ const deliverySteps = [
 export default function ProductsPage() {
   return (
     <>
+      <JsonLd graph={breadcrumbJsonLd([{ name: "Products", path: "/products" }])} />
       {/* Product-launch header: copy first, then the line-up framed beneath it. */}
       <section className="on-dark relative isolate overflow-clip bg-abyss text-white">
         <div aria-hidden="true" className="aurora" />

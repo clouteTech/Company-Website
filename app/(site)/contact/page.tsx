@@ -12,6 +12,8 @@ import {
   Server,
   ShieldCheck,
 } from "lucide-react";
+import { JsonLd } from "@/components/json-ld";
+import { breadcrumbJsonLd } from "@/lib/seo";
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 
@@ -49,6 +51,8 @@ const highlights = [
 export default function ContactPage() {
   return (
     <div className="ct" style={palette}>
+      <JsonLd graph={breadcrumbJsonLd([{ name: "Contact", path: "/contact" }])} />
+
       <PageHero
         size="compact"
         title={cms.contact.ContactPage.title01_it_company_in_bangalore}

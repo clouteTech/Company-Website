@@ -5,6 +5,7 @@ import { type StaticImageData } from "next/image";
 import Link from "next/link";
 import { Fragment, type ComponentType, type CSSProperties, type ReactNode } from "react";
 
+import { JsonLd } from "@/components/json-ld";
 import { company } from "@/lib/site";
 import type { Faq } from "@/lib/types";
 
@@ -649,6 +650,16 @@ interface FaqSectionProps {
 export function FaqSection({ faqs, tone = "white", name, title = "Frequently Asked Questions" }: FaqSectionProps) {
   return (
     <section id="faq" className={`section-y overflow-x-clip ${toneClass[tone]}`}>
+      <JsonLd
+        graph={{
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        }}
+      />
       <div className="shell grid gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
